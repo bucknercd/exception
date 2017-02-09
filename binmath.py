@@ -1,3 +1,4 @@
+
 from Errors import OperatorException
 import sys
 
@@ -38,11 +39,13 @@ def binmath(b1,op,b2):
 
 
 while True:
-    quit = ['Q','q','quit']
-    line  = raw_input('Enter a binary operation or q to exit.\n>').strip()
+    try:
+        line  = raw_input('Enter a binary operation or q to exit.\n>').strip()
+    except EOFError as e:
+        sys.exit()
     try:
         option = line[0]
-	if option in quit:
+        if line == 'q' or line == 'Q' or line == 'quit'or line == 'exit':
 	    sys.exit()
     except IndexError as e:
 	print e
